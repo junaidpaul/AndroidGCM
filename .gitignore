@@ -8,6 +8,9 @@ gradlew
 settings.gradle
 local.properties
 gradlew.bat
+build/
+build
+
 
 
 
