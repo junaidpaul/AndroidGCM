@@ -5,8 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--
+    Permission to recieve gcm message
+    -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
     <permission android:name="com.junaidepaul.androidgcm.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="com.junaidepaul.androidgcm.permission.C2D_MESSAGE" />
@@ -28,11 +30,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
+        pass off the work to a service (Intent service)
+        Broadcast receiver should be an instance of wakefulBroadcastReciever to hold wake lock.
+        -->
         <receiver
             android:name=".GcmBroadcastReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
+                <!-- -->
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
                 <category android:name="com.junaidepaul.androidgcm" />

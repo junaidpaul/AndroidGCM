@@ -1,5 +1,5 @@
 package com.junaidepaul.androidgcm;
-import android.content.Context;
+
 import android.util.Log;
 import android.view.View;
 import android.app.Activity;
@@ -7,12 +7,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
 import android.os.AsyncTask;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-
-import java.io.FileOutputStream;
 import java.io.IOException;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -23,11 +20,8 @@ public class MainActivity extends Activity{
     TextView idDisplay;
     GoogleCloudMessaging gcm;
     String regid;
+    // Sender ID (Project No from Google console)
     String projectno = "447895585243";
-    FileOutputStream outputStream;
-    String filename = "RedistrationID";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +82,6 @@ public class MainActivity extends Activity{
             @Override
             protected void onPostExecute(String msg){
                 idDisplay.setText(msg + "\n");
-                try {
-                    outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-                    outputStream.write(msg.getBytes());
-                    outputStream.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
 
 
